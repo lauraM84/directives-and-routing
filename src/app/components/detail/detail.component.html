@@ -1,5 +1,6 @@
 @if(student){
 <div>
     <h2>{{student.name}}</h2>
+    <button (click)="removeStudent(student.id)">delete</button>
 </div>
 }

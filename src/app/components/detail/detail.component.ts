@@ -10,6 +10,8 @@ import { Student } from '../../model/student';
   styleUrl: './detail.component.scss'
 })
 export class DetailComponent {
+
+
   route = inject(ActivatedRoute);
   studentServ = inject(StudentService);
   student?: Student;
@@ -24,6 +26,10 @@ export class DetailComponent {
 
 
     }
+
+  }
+  removeStudent(id: string) {
+    this.studentServ.removeStudent(id)
 
   }
 
