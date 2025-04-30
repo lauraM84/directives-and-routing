@@ -43,4 +43,22 @@ export class StudentService {
     })
   }
 
+  addMarks(id: string, marks: number[]): Promise<Student> {
+
+    const patchValue = { marks: marks }
+
+    return fetch(this.BASE_URL + this.STUDENTS_ENDPOINT + id, {
+      method: 'PATCH',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(patchValue)
+    }).then(res => {
+      return res.json();
+    }
+      // handle error
+    ).catch(error => {
+      console.error(error);
+    })
+  }
+
+
 }

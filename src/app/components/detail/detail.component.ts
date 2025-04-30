@@ -23,14 +23,19 @@ export class DetailComponent {
         next: (data) => this.student = data,
         error: (err) => console.error()
       })
-
-
     }
 
   }
   removeStudent(id: string) {
     this.studentServ.removeStudent(id)
 
+  }
+
+  addMarksToStudent(newMarks: number[]) {
+    if (this.student) {
+      this.studentServ.addMarks(this.student?.id, newMarks)
+        .then(modifiedStudent => this.student = modifiedStudent)
+    }
   }
 
 }

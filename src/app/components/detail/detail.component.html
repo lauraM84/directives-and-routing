@@ -3,4 +3,15 @@
     <h2>{{student.name}}</h2>
     <button (click)="removeStudent(student.id)">delete</button>
 </div>
+<div>
+    <span><strong>marks: </strong></span>
+    @for (mark of student.marks; track $index){
+    <span class="mark">{{mark}}</span>
+    }
+</div>
+<form>
+    <label for="mark">aggiungi voto</label>
+    <input type="number" name="mark" id="mark">
+    <button>add</button>
+</form>
 }
