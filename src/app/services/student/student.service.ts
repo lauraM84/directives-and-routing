@@ -48,7 +48,7 @@ export class StudentService {
     const patchValue = { marks: marks }
 
     return fetch(this.BASE_URL + this.STUDENTS_ENDPOINT + id, {
-      method: 'PATCH',
+      method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(patchValue)
     }).then(res => {
@@ -60,5 +60,34 @@ export class StudentService {
     })
   }
 
+  addStudent() {
+    const testStudent: Student = {
+      name: "Indiana",
+      surname: "Pipps",
+      country: "Topolinia",
+      dob: "01/10/1980",
+      gender: "m",
+      imageUrl: "https://www.topolino.it/wp-content/uploads/2019/11/indiana_pipps_intera.png",
+      marks: [1, 2, 3, 4, 5],
+      id: ""
+    }
+
+    fetch(this.BASE_URL + this.STUDENTS_ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(testStudent)
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    }).then(newStudent => {
+      console.log("newStudent", newStudent);
+
+    }).catch(error => {
+
+    })
+  }
 
 }

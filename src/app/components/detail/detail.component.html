@@ -9,9 +9,9 @@
     <span class="mark">{{mark}}</span>
     }
 </div>
-<form>
+<form [formGroup]="myForm" (ngSubmit)="addMark()">
     <label for="mark">aggiungi voto</label>
-    <input type="number" name="mark" id="mark">
-    <button>add</button>
+    <input type="number" formControlName="mark" id="mark">
+    <button type="submit">add</button>
 </form>
 }
