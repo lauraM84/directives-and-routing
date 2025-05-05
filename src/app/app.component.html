@@ -8,9 +8,11 @@
 <header>
   <h1>Student manager</h1>
   <nav>
-    <a routerLink="/">Home</a>
+    <a routerLink="/home">Home</a>
     <a [routerLink]="['randomize']">randomize</a>
-    <a [routerLink]="['addStudent']">new student</a>
+    <a *ngIf="authServ.isAuth" [routerLink]="['addStudent']">new student</a>
+    <a *ngIf="!authServ.isAuth" [routerLink]="['login']">login</a>
+    <a *ngIf="authServ.isAuth" (click)="logout()">logout</a>
 
   </nav>
 </header>
